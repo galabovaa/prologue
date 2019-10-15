@@ -1,0 +1,237 @@
+<html>
+
+<head>
+  <title>HiGHS Options</title>
+</head>
+<body style="background-color:f5fafa;"></body>
+
+<h3>HiGHS Options</h3>
+
+<!--link rel="stylesheet" type="text/css" href="HiGHS.css"/-->
+<ul>
+  <li><tt>
+      <font size="+1">model_file</font>
+    </tt><br>
+    <p>Model file<br>
+      type: string, advanced: false, default: ""</p>
+  </li>
+  <li><tt>
+      <font size="+1">presolve</font>
+    </tt><br>
+    <p>Presolve option: "off", "choose" or "on"<br>
+      type: string, advanced: false, default: "choose"</p>
+  </li>
+  <li><tt>
+      <font size="+1">solver</font>
+    </tt><br>
+    <p>Solver option: "simplex", "choose" or "ipm"<br>
+      type: string, advanced: false, default: "choose"</p>
+  </li>
+  <li><tt>
+      <font size="+1">parallel</font>
+    </tt><br>
+    <p>Parallel option: "off", "choose" or "on"<br>
+      type: string, advanced: false, default: "choose"</p>
+  </li>
+  <li><tt>
+      <font size="+1">time_limit</font>
+    </tt><br>
+    <p>Time limit<br>
+      type: double, advanced: false, range: [0, 1e+200], default: 1e+200</p>
+  </li>
+  <li><tt>
+      <font size="+1">simplex_iteration_limit</font>
+    </tt><br>
+    <p>Iteration limit for simplex solver<br>
+      type: int, advanced: false, range: {0, 2147483647}, default: 2147483647</p>
+  </li>
+  <li><tt>
+      <font size="+1">infinite_cost</font>
+    </tt><br>
+    <p>Limit on cost coefficient: values larger than this will be treated as infinite<br>
+      type: double, advanced: false, range: [1e+15, 1e+25], default: 1e+20</p>
+  </li>
+  <li><tt>
+      <font size="+1">infinite_bound</font>
+    </tt><br>
+    <p>Limit on |constraint bound|: values larger than this will be treated as infinite<br>
+      type: double, advanced: false, range: [1e+15, 1e+25], default: 1e+20</p>
+  </li>
+  <li><tt>
+      <font size="+1">small_matrix_value</font>
+    </tt><br>
+    <p>Lower limit on |matrix entries|: values smaller than this will be treated as zero<br>
+      type: double, advanced: false, range: [1e-12, 1e+200], default: 1e-09</p>
+  </li>
+  <li><tt>
+      <font size="+1">large_matrix_value</font>
+    </tt><br>
+    <p>Upper limit on |matrix entries|: values larger than this will be treated as infinite<br>
+      type: double, advanced: false, range: [1, 1e+20], default: 1e+15</p>
+  </li>
+  <li><tt>
+      <font size="+1">primal_feasibility_tolerance</font>
+    </tt><br>
+    <p>Primal feasibility tolerance<br>
+      type: double, advanced: false, range: [1e-10, 1e+200], default: 1e-07</p>
+  </li>
+  <li><tt>
+      <font size="+1">dual_feasibility_tolerance</font>
+    </tt><br>
+    <p>Dual feasibility tolerance<br>
+      type: double, advanced: false, range: [1e-10, 1e+200], default: 1e-07</p>
+  </li>
+  <li><tt>
+      <font size="+1">dual_objective_value_upper_bound</font>
+    </tt><br>
+    <p>Upper bound on objective value for dual simplex: algorithm terminates if reached<br>
+      type: double, advanced: false, range: [-1e+200, 1e+200], default: 1e+200</p>
+  </li>
+  <li><tt>
+      <font size="+1">simplex_strategy</font>
+    </tt><br>
+    <p>Strategy for simplex solver<br>
+      type: int, advanced: false, range: {0, 4}, default: 1</p>
+  </li>
+  <li><tt>
+      <font size="+1">simplex_scale_strategy</font>
+    </tt><br>
+    <p>Strategy for scaling before simplex solver: off / on (0/1)<br>
+      type: int, advanced: false, range: {0, 2}, default: 1</p>
+  </li>
+  <li><tt>
+      <font size="+1">simplex_crash_strategy</font>
+    </tt><br>
+    <p>Strategy for simplex crash: off / LTSSF / Bixby (0/1/2)<br>
+      type: int, advanced: false, range: {0, 9}, default: 0</p>
+  </li>
+  <li><tt>
+      <font size="+1">simplex_dual_edge_weight_strategy</font>
+    </tt><br>
+    <p>Strategy for simplex dual edge weights: Dantzig / Devex / Steepest Edge (0/1/2)<br>
+      type: int, advanced: false, range: {0, 4}, default: 2</p>
+  </li>
+  <li><tt>
+      <font size="+1">simplex_primal_edge_weight_strategy</font>
+    </tt><br>
+    <p>Strategy for simplex primal edge weights: Dantzig / Devex (0/1)<br>
+      type: int, advanced: false, range: {0, 1}, default: 0</p>
+  </li>
+  <li><tt>
+      <font size="+1">simplex_update_limit</font>
+    </tt><br>
+    <p>Limit on the number of simplex UPDATE operations<br>
+      type: int, advanced: false, range: {0, 2147483647}, default: 5000</p>
+  </li>
+  <li><tt>
+      <font size="+1">message_level</font>
+    </tt><br>
+    <p>HiGHS message level: bit-mask 1 => VERBOSE; 2 => DETAILED 4 => MINIMAL<br>
+      type: int, advanced: false, range: {0, 7}, default: 4</p>
+  </li>
+  <li><tt>
+      <font size="+1">run_as_hsol</font>
+    </tt><br>
+    <p>Run HiGHS simplex solver as if it were hsol<br>
+      type: bool, advanced: true, range: {false, true}, default: false</p>
+  </li>
+  <li><tt>
+      <font size="+1">mps_parser_type_free</font>
+    </tt><br>
+    <p>Use the free format MPS file reader<br>
+      type: bool, advanced: true, range: {false, true}, default: true</p>
+  </li>
+  <li><tt>
+      <font size="+1">keep_n_rows</font>
+    </tt><br>
+    <p>For multiple N-rows in MPS files: delete rows / delete entries / keep rows (-1/0/1)<br>
+      type: int, advanced: true, range: {-1, 1}, default: -1</p>
+  </li>
+  <li><tt>
+      <font size="+1">allowed_simplex_scale_factor</font>
+    </tt><br>
+    <p>Largest power-of-two factor permitted when scaling for the simplex solver<br>
+      type: int, advanced: true, range: {0, 20}, default: 10</p>
+  </li>
+  <li><tt>
+      <font size="+1">simplex_dualise_strategy</font>
+    </tt><br>
+    <p>Strategy for dualising before simplex<br>
+      type: int, advanced: true, range: {-1, 1}, default: -1</p>
+  </li>
+  <li><tt>
+      <font size="+1">simplex_permute_strategy</font>
+    </tt><br>
+    <p>Strategy for permuting before simplex<br>
+      type: int, advanced: true, range: {-1, 1}, default: -1</p>
+  </li>
+  <li><tt>
+      <font size="+1">simplex_price_strategy</font>
+    </tt><br>
+    <p>Strategy for PRICE in simplex<br>
+      type: int, advanced: true, range: {0, 4}, default: 3</p>
+  </li>
+  <li><tt>
+      <font size="+1">simplex_initial_condition_check</font>
+    </tt><br>
+    <p>Perform initial basis condition check in simplex<br>
+      type: bool, advanced: true, range: {false, true}, default: true</p>
+  </li>
+  <li><tt>
+      <font size="+1">simplex_initial_condition_tolerance</font>
+    </tt><br>
+    <p>Tolerance on initial basis condition in simplex<br>
+      type: double, advanced: true, range: [1, 1e+200], default: 1e+14</p>
+  </li>
+  <li><tt>
+      <font size="+1">dual_steepest_edge_weight_log_error_threshhold</font>
+    </tt><br>
+    <p>Threshhold on dual steepest edge weight errors for Devex switch<br>
+      type: double, advanced: true, range: [1, 1e+200], default: 10</p>
+  </li>
+  <li><tt>
+      <font size="+1">simplex_perturb_costs</font>
+    </tt><br>
+    <p>Perturb costs in dual simplex solver<br>
+      type: bool, advanced: true, range: {false, true}, default: true</p>
+  </li>
+  <li><tt>
+      <font size="+1">find_feasibility</font>
+    </tt><br>
+    <p>Run iCrash<br>
+      type: bool, advanced: true, range: {false, true}, default: false</p>
+  </li>
+  <li><tt>
+      <font size="+1">feasibility_strategy</font>
+    </tt><br>
+    <p>Strategy for iCrash<br>
+      type: int, advanced: true, range: {0, 2}, default: 0</p>
+  </li>
+  <li><tt>
+      <font size="+1">feasibility_strategy_dualize</font>
+    </tt><br>
+    <p>Dualise strategy for iCrash<br>
+      type: bool, advanced: true, range: {false, true}, default: false</p>
+  </li>
+  <li><tt>
+      <font size="+1">mip</font>
+    </tt><br>
+    <p>Run MIP solver<br>
+      type: bool, advanced: true, range: {false, true}, default: false</p>
+  </li>
+  <li><tt>
+      <font size="+1">less_infeasible_DSE_check</font>
+    </tt><br>
+    <p>Check whether LP is candidate for LiDSE<br>
+      type: bool, advanced: true, range: {false, true}, default: true</p>
+  </li>
+  <li><tt>
+      <font size="+1">less_infeasible_DSE_choose_row</font>
+    </tt><br>
+    <p>Use LiDSE if LP has right properties<br>
+      type: bool, advanced: true, range: {false, true}, default: true</p>
+  </li>
+</ul>
+</body>
+
+</html>
