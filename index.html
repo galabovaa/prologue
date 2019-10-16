@@ -112,16 +112,16 @@
 				<header>
 					<h2>Guide</h2>
 				</header>
-
-				<p>
-				  This guide sets out what HiGHS can
-				  be used for, and how to run it. This
-				  can be done from a command line or
-				  from within another application.
-				</p>
+				  <p>This guide sets out what HiGHS
+				  can be used for, and how
+				  to <a href="#build_highs">build</a>
+				  and run it. Highs can be
+				  run <a href="#run_highs_from_command_line">from
+				  a command line</a> or
+				  from <a href="#run_highs_from_application">within
+				  another application</a>.</p>
 				<h3>Specification</h3>
-				<p>
-				  HiGHS can load LP and MIP models
+				  <p>HiGHS can load LP and MIP models
 				  from either data files, or via data
 				  provided by another application. It
 				  can solve LP problems using the dual
@@ -132,10 +132,42 @@
 				  applicaion. When used within an
 				  application, HiGHS can be used to
 				  modify the current problem and
-				  re-solve it efficiently. </p>
-				<h3>Running HiGHS from the command line</h3>
-				<p>
-				</p>
+				  re-solve it efficiently.</p>
+				<h3 id="build_highs">Building HiGHS</h3>
+<p>HiGHS uses CMake as a build system. First setup a build directory
+and call CMake as follows
+  <pre><code>  mkdir build
+  cd build
+  cmake ..
+</code></pre>
+<p>Then compile the code using</p>
+<pre><code>  make</code></pre>
+<p>To perform a quick test to see whether the compilation was successful, run
+<pre><code>  ctest</code></pre>
+
+<h3 id="run_highs_from_command_line">Running HiGHS from the command line</h3>
+<p>In the following discussion, the name of the executable file generated is assumed to be <code>highs</code>. HiGHS can read plain text MPS files and LP files and the following command solves the model in <code>ml.mps</code>
+<pre><code>  highs ml.mps</code></pre>
+<p>HiGHS is controlled by means of options. Some may be specified directly on the command line. Many more are specified via a file. Formally, the usage is
+  <pre><code>  highs [OPTION...] [file]</code></pre>
+<p>using the following options.
+<table>
+<tr><td><code>--model_file arg       </code></td><td><pre>File of model to solve.</pre></tr>
+<tr><td><code>--presolve arg         </code></td><td><pre>Presolve: "choose" by default - "on"/"off" are alternatives.</pre></tr>
+<tr><td><code>--solver arg           </code></td><td><pre>Solver: "choose" by default - "simplex"/"ipm" are alternatives.</pre></tr>
+<tr><td><code>--parallel arg         </code></td><td><pre>Parallel solve: "choose" by default - "on"/"off" are alternatives.</pre></tr>
+<tr><td><code>--time_limit arg       </code></td><td><pre>Run time limit (double).</pre></tr>
+<tr><td><code>--options_file arg     </code></td><td><pre>File containing HiGHS options.</pre></tr>
+<tr><td><code>-h, --help             </code></td><td><pre>Print help.</pre></tr>
+  </table>
+<p>A full specification of these options, and all options that are
+specified via a file, is given <a href="HighsOptions.html"
+target="_blank">here</a>. Within an options file, values are specified
+line-by-line as <code>option_name = value</code>. An example file
+containing default settings of all options
+is <a href="HighsOptions.set" target="_blank">here</a>.
+  <h3 id="run_highs_from_application">Running HiGHS from within an application</h3>
+  
 			</div>
 		</section>
 
