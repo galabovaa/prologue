@@ -129,7 +129,7 @@
 				  problems using branch-and-bound. The
 				  solution can be written to a file or
 				  retrieved directly for use within an
-				  applicaion. When used within an
+				  application. When used within an
 				  application, HiGHS can be used to
 				  modify the current problem and
 				  re-solve it efficiently.</p>
@@ -165,9 +165,30 @@ specified via a file, is given <a href="HighsOptions.html"
 target="_blank">here</a>. Within an options file, values are specified
 line-by-line as <code>option_name = value</code>. An example file
 containing default settings of all options
-is <a href="HighsOptions.set" target="_blank">here</a>.
+  is <a href="HighsOptions.set" target="_blank">here</a>.
+
+  <p>Note that it is possible to write the solution to the screen or
+  to a file in either a pretty (human-readable) format or simple
+  (computer-readable) format.
+
   <h3 id="run_highs_from_application">Running HiGHS from within an application</h3>
-  
+  <p>To run HiGHS from an application, it is necessary
+  to <a href="#load_a_model">load a
+  model</a>, <a href="#solve_a_model">solve it</a>
+  and <a href="#extract_result">extract the results</a>. It is also
+  possible to <a href="#extract_model_data">extract model data</a>
+  and <a href="#modify_a_model">modify a model</a>. HiGHS can perform <a href="#other_operations">other operations</a> for specialist applications.
+    <h4 id="#load_a_model">Load a model</h4>
+
+    <h4 id="#solve_a_model">Solve a model</h4>
+
+    <h4 id="#extract_result">Extract the results</h4>
+
+    <h4 id="#extract_model_data">Extract model data</h4>
+
+    <h4 id="#modify_a_model">Modify a model</h4>
+
+    <h4 id="#other_operations">Other operations</h4>
 			</div>
 		</section>
 

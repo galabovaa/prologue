@@ -1,0 +1,160 @@
+
+# Model file
+# [type: string, advanced: false, default: ""]
+model_file = 
+
+# Presolve option: "off", "choose" or "on"
+# [type: string, advanced: false, default: "choose"]
+presolve = choose
+
+# Solver option: "simplex", "choose" or "ipm"
+# [type: string, advanced: false, default: "choose"]
+solver = choose
+
+# Parallel option: "off", "choose" or "on"
+# [type: string, advanced: false, default: "choose"]
+parallel = choose
+
+# Time limit
+# [type: double, advanced: false, range: [0, 1e+200], default: 1e+200]
+time_limit = 1e+200
+
+# Iteration limit for simplex solver
+# [type: int, advanced: false, range: {0, 2147483647}, default: 2147483647]
+simplex_iteration_limit = 2147483647
+
+# Limit on cost coefficient: values larger than this will be treated as infinite
+# [type: double, advanced: false, range: [1e+15, 1e+25], default: 1e+20]
+infinite_cost = 1e+20
+
+# Limit on |constraint bound|: values larger than this will be treated as infinite
+# [type: double, advanced: false, range: [1e+15, 1e+25], default: 1e+20]
+infinite_bound = 1e+20
+
+# Lower limit on |matrix entries|: values smaller than this will be treated as zero
+# [type: double, advanced: false, range: [1e-12, 1e+200], default: 1e-09]
+small_matrix_value = 1e-09
+
+# Upper limit on |matrix entries|: values larger than this will be treated as infinite
+# [type: double, advanced: false, range: [1, 1e+20], default: 1e+15]
+large_matrix_value = 1e+15
+
+# Primal feasibility tolerance
+# [type: double, advanced: false, range: [1e-10, 1e+200], default: 1e-07]
+primal_feasibility_tolerance = 1e-07
+
+# Dual feasibility tolerance
+# [type: double, advanced: false, range: [1e-10, 1e+200], default: 1e-07]
+dual_feasibility_tolerance = 1e-07
+
+# Upper bound on objective value for dual simplex: algorithm terminates if reached
+# [type: double, advanced: false, range: [-1e+200, 1e+200], default: 1e+200]
+dual_objective_value_upper_bound = 1e+200
+
+# Strategy for simplex solver
+# [type: int, advanced: false, range: {0, 4}, default: 1]
+simplex_strategy = 1
+
+# Strategy for scaling before simplex solver: off / on (0/1)
+# [type: int, advanced: false, range: {0, 2}, default: 1]
+simplex_scale_strategy = 1
+
+# Strategy for simplex crash: off / LTSSF / Bixby (0/1/2)
+# [type: int, advanced: false, range: {0, 9}, default: 0]
+simplex_crash_strategy = 0
+
+# Strategy for simplex dual edge weights: Dantzig / Devex / Steepest Edge (0/1/2)
+# [type: int, advanced: false, range: {0, 4}, default: 2]
+simplex_dual_edge_weight_strategy = 2
+
+# Strategy for simplex primal edge weights: Dantzig / Devex (0/1)
+# [type: int, advanced: false, range: {0, 1}, default: 0]
+simplex_primal_edge_weight_strategy = 0
+
+# Limit on the number of simplex UPDATE operations
+# [type: int, advanced: false, range: {0, 2147483647}, default: 5000]
+simplex_update_limit = 5000
+
+# HiGHS message level: bit-mask 1 => VERBOSE; 2 => DETAILED 4 => MINIMAL
+# [type: int, advanced: false, range: {0, 7}, default: 4]
+message_level = 4
+
+# Solution file
+# [type: string, advanced: false, default: ""]
+solution_file = 
+
+# Write the primal and dual solution to a file
+# [type: bool, advanced: false, range: {false, true}, default: false]
+write_solution_to_file = false
+
+# Write the primal and dual solution in a pretty (human-readable) format
+# [type: bool, advanced: false, range: {false, true}, default: false]
+write_solution_pretty = false
+
+# Run HiGHS simplex solver as if it were hsol
+# [type: bool, advanced: true, range: {false, true}, default: false]
+run_as_hsol = false
+
+# Use the free format MPS file reader
+# [type: bool, advanced: true, range: {false, true}, default: true]
+mps_parser_type_free = true
+
+# For multiple N-rows in MPS files: delete rows / delete entries / keep rows (-1/0/1)
+# [type: int, advanced: true, range: {-1, 1}, default: -1]
+keep_n_rows = -1
+
+# Largest power-of-two factor permitted when scaling for the simplex solver
+# [type: int, advanced: true, range: {0, 20}, default: 10]
+allowed_simplex_scale_factor = 10
+
+# Strategy for dualising before simplex
+# [type: int, advanced: true, range: {-1, 1}, default: -1]
+simplex_dualise_strategy = -1
+
+# Strategy for permuting before simplex
+# [type: int, advanced: true, range: {-1, 1}, default: -1]
+simplex_permute_strategy = -1
+
+# Strategy for PRICE in simplex
+# [type: int, advanced: true, range: {0, 4}, default: 3]
+simplex_price_strategy = 3
+
+# Perform initial basis condition check in simplex
+# [type: bool, advanced: true, range: {false, true}, default: true]
+simplex_initial_condition_check = true
+
+# Tolerance on initial basis condition in simplex
+# [type: double, advanced: true, range: [1, 1e+200], default: 1e+14]
+simplex_initial_condition_tolerance = 1e+14
+
+# Threshhold on dual steepest edge weight errors for Devex switch
+# [type: double, advanced: true, range: [1, 1e+200], default: 10]
+dual_steepest_edge_weight_log_error_threshhold = 10
+
+# Perturb costs in dual simplex solver
+# [type: bool, advanced: true, range: {false, true}, default: true]
+simplex_perturb_costs = true
+
+# Run iCrash
+# [type: bool, advanced: true, range: {false, true}, default: false]
+find_feasibility = false
+
+# Strategy for iCrash
+# [type: int, advanced: true, range: {0, 2}, default: 0]
+feasibility_strategy = 0
+
+# Dualise strategy for iCrash
+# [type: bool, advanced: true, range: {false, true}, default: false]
+feasibility_strategy_dualize = false
+
+# Run MIP solver
+# [type: bool, advanced: true, range: {false, true}, default: false]
+mip = false
+
+# Check whether LP is candidate for LiDSE
+# [type: bool, advanced: true, range: {false, true}, default: true]
+less_infeasible_DSE_check = true
+
+# Use LiDSE if LP has right properties
+# [type: bool, advanced: true, range: {false, true}, default: true]
+less_infeasible_DSE_choose_row = true
