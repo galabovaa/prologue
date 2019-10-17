@@ -25,6 +25,9 @@ section, summary, time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;}
 
+h5 {
+    text-align: left;}
+
 pre,p {
     text-align: left;
     line-height: 150%;}

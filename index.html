@@ -109,31 +109,25 @@
 		<section id="guide" class="three">
 			<div class="container">
 
-				<header>
-					<h2>Guide</h2>
-				</header>
-				  <p>This guide sets out what HiGHS
-				  can be used for, and how
-				  to <a href="#build_highs">build</a>
-				  and run it. Highs can be
-				  run <a href="#run_highs_from_command_line">from
-				  a command line</a> or
-				  from <a href="#run_highs_from_application">within
-				  another application</a>.</p>
-				<h3>Specification</h3>
-				  <p>HiGHS can load LP and MIP models
-				  from either data files, or via data
-				  provided by another application. It
-				  can solve LP problems using the dual
-				  revised simplex method and MIP
-				  problems using branch-and-bound. The
-				  solution can be written to a file or
-				  retrieved directly for use within an
-				  application. When used within an
-				  application, HiGHS can be used to
-				  modify the current problem and
-				  re-solve it efficiently.</p>
-				<h3 id="build_highs">Building HiGHS</h3>
+<header>
+	<h2>Guide</h2>
+</header>
+  <p>This guide sets out what HiGHS can be used for, and how
+  to <a href="#build_highs">build</a> and run it. Highs can be
+  run <a href="#run_highs_from_command_line">from a command line</a>
+  or from <a href="#run_highs_from_application">within another
+  application</a>.</p>
+
+<h3>Specification</h3>
+  <p>HiGHS can load LP and MIP models from either data files, or via
+  data provided by another application. It can solve LP problems using
+  the dual revised simplex method and MIP problems using
+  branch-and-bound. The solution can be written to a file or retrieved
+  directly for use within an application. When used within an
+  application, HiGHS can be used to modify the current problem and
+  re-solve it efficiently.</p>
+
+<h3 id="build_highs">Building HiGHS</h3>
 <p>HiGHS uses CMake as a build system. First setup a build directory
 and call CMake as follows
   <pre><code>  mkdir build
@@ -146,9 +140,14 @@ and call CMake as follows
 <pre><code>  ctest</code></pre>
 
 <h3 id="run_highs_from_command_line">Running HiGHS from the command line</h3>
-<p>In the following discussion, the name of the executable file generated is assumed to be <code>highs</code>. HiGHS can read plain text MPS files and LP files and the following command solves the model in <code>ml.mps</code>
+<p>In the following discussion, the name of the executable file
+generated is assumed to be <code>highs</code>. HiGHS can read plain
+text MPS files and LP files and the following command solves the model
+in <code>ml.mps</code>
 <pre><code>  highs ml.mps</code></pre>
-<p>HiGHS is controlled by means of options. Some may be specified directly on the command line. Many more are specified via a file. Formally, the usage is
+<p>HiGHS is controlled by means of options. Some may be specified
+directly on the command line. Many more are specified via a
+file. Formally, the usage is
   <pre><code>  highs [OPTION...] [file]</code></pre>
 <p>using the following options.
 <table>
@@ -160,6 +159,7 @@ and call CMake as follows
 <tr><td><code>--options_file arg     </code></td><td><pre>File containing HiGHS options.</pre></tr>
 <tr><td><code>-h, --help             </code></td><td><pre>Print help.</pre></tr>
   </table>
+
 <p>A full specification of these options, and all options that are
 specified via a file, is given <a href="HighsOptions.html"
 target="_blank">here</a>. Within an options file, values are specified
@@ -167,9 +167,12 @@ line-by-line as <code>option_name = value</code>. An example file
 containing default settings of all options
 is <a href="HighsOptions.set" target="_blank">here</a>.
 
-<p>Note that it is possible to write the solution to the screen or
-  to a file in either a pretty (human-readable) format or simple
-  (computer-readable) format.
+<p>Note that by setting the values of
+  options <code>solution_file</code>, <code>write_solution_to_file</code>
+  and <code>write_solution_pretty</code> appropriately, it is possible
+  to write the solution to <code>stdout</code> (by setting <code>solution_file
+  = ""</code>) or to a file in either a pretty (human-readable) format
+  or simple (computer-readable) format.
   
   <h3 id="run_highs_from_application">Running HiGHS from within an application</h3>
 
@@ -194,6 +197,9 @@ is <a href="HighsOptions.set" target="_blank">here</a>.
   characteristics of
   the <a href="#language_interfaces">interfaces</a>.</p>
 
+<p>Example programs calling HiGHS from C, C#, FORTRAN, Julia and
+Python are in <strong>HiGHS/examples</strong>.</p>
+
 <p>Before the C++ methods can be used, an instance of
   the <code>Highs</code> class must be created. Some methods are used
   to return data, and the others return an indication of success. In
@@ -202,7 +208,7 @@ is <a href="HighsOptions.set" target="_blank">here</a>.
 
 <!--p>HiGHS can also be called via the following specific interfaces: <a href="#osi_interface">OSI</a> and <a href="#gams_interface">GAMS</a></p-->
 
-<h4 id="#load_a_model">Load a model</h4>
+<h4 id="load_a_model">Load a model</h4>
 
 <p>The simplest way to use HiGHS to solve a problem is to load a model
 from a file using the
@@ -215,26 +221,55 @@ the method <code>passModel(HighsLp)</code>. In languages where such
 structures cannot be used, data constituting an LP problem can be
 passed via individual parameters.</p>
 
-<h4 id="#solve_a_model">Solve a model</h4>
+<h4 id="solve_a_model">Solve a model</h4>
 
 <p>HiGHS is used to solve a problem by calling <code>run()</code>.</p>
 
-<h4 id="#extract_result">Extract the results</h4>
+<h4 id="extract_result">Extract the results</h4>
 
 <p>After solving a model, its status is the value returned
 by <code>getModelStatus()</code>. This value is of
 type <code>HighsModelStatus</code>, and may be interpreted via the
-names in the <code>enum</code>.</p>
+names in the corresponding <code>enum</code>. The objective function
+value and iteration count are obtained
+using <code>getObjectiveValue()</code>
+and <code>getIterationCount()</code>. The solution and basis are
+returned by <code>getSolution()</code> and <code>getSolution()</code>
+respectively. Note that these are const references to internal
+data. HiGHS can also be used to write the solution to a file
+using <code>writeSolution(filename)</code>, with the output going
+to <code>stdout</code> if <code>filename</code> is blank.</p>
 
-<h4 id="#option_values">Option values</h4>
+<h4 id="option_values">Option values</h4>
 
-<h4 id="#extract_model_data">Extract model data</h4>
+<h4 id="extract_model_data">Extract model data</h4>
 
-<h4 id="#modify_a_model">Modify a model</h4>
+<p>The numbers of column, rows and nonzeros in the model are returned
+by <code>getNumCols()</code>, <code>getNumRows()</code>
+and <code>getNumEntries()</code> respectively. Data for columns and
+rows from the model may be extracted using <code>getCols</code>
+and <code>getRows</code>, and specific matrix coefficients obtained
+using <code>getCoeff</code>.</p>
 
-<h4 id="#other_operations">Other operations</h4>
+<h4 id="modify_a_model">Modify a model</h4>
 
-<h4 id="#language_interfaces">Language interfaces</h4>
+<h4 id="other_operations">Other operations</h4>
+
+<h4 id="language_interfaces">Language interfaces</h4>
+
+<h5 id="csharp_interface">C# interface</h5>
+<p>
+From an application written in C#, HiGHS is run by creating
+a <code>HighsLpSolver</code> instance thus</p>
+<pre><code>  HighsLpSolver solver = new HighsLpSolver();</code></pre>
+<p>An LP problem may then be read in from a
+file <code>solver.readModel(Filename)</code>, or passed to HiGHS by
+passing its component arrays of data to <code>HighsModel</code>. This
+returns an object that can then be passed to
+the <code>HighsLpSolver</code> instance
+via <code>solver.passLp(*)</code>. The LP is solved
+using <code>solver.run()</code>, and data extracted as described above
+for the C++ interface.</p>
 
 </div>
 </section>
@@ -242,12 +277,12 @@ names in the <code>enum</code>.</p>
 		<section id="options" class="two">
 			<div class="container">
 
-				<header>
-					<h2>Options</h2>
-				</header>
+<header>
+	<h2>Options</h2>
+</header>
 
-				<p>
-					HiGHS options are specified <a href="HighsOptions.html" target="_blank">here</a>.</p>
+<p>
+	HiGHS options are specified <a href="HighsOptions.html" target="_blank">here</a>.</p>
 			</div>
 		</section>
 
@@ -255,12 +290,12 @@ names in the <code>enum</code>.</p>
 		<section id="download" class="three">
 			<div class="container">
 
-				<header>
-					<h2>Download</h2>
-				</header>
+<header>
+	<h2>Download</h2>
+</header>
 
-				<p> Download the latest revision of HiGHS from <a href="https://github.com/ERGO-Code/HiGHS">
-						https://github.com/ERGO-Code/HiGHS </a> and follow the instructions in HiGHS/README.md. </p>
+<p> Download the latest revision of HiGHS from <a href="https://github.com/ERGO-Code/HiGHS">
+		https://github.com/ERGO-Code/HiGHS </a> and follow the instructions in HiGHS/README.md. </p>
 
 			</div>
 		</section>
@@ -269,31 +304,31 @@ names in the <code>enum</code>.</p>
 		<section id="team" class="two">
 			<div class="container">
 
-				<header>
-					<h2>The Team</h2>
-				</header>
+<header>
+	<h2>The Team</h2>
+</header>
 
-				<div class="row">
-					<div class="col-6 col-12-mobile">
-						<img src="images/QiJulianIvet0.jpg" alt="" height=200 />
-						<figcaption>
-							Qi Huangfu, Julian Hall and Ivet Galabova
-						</figcaption>
-					</div>
-					<div class="col-2 col-6-mobile">
-						<img src="images/MichaelFeldmeier.jpg" alt="" height=200 />
-						<figcaption>
-							Michael Feldmeier
-						</figcaption>
-					</div>
-					<div class="col-4 col-6-mobile">
-						<br>
-						<img src="images/LukasSchork.jpg" alt="" />
-						<figcaption>
-							Lukas Schork
-						</figcaption>
-					</div>
-				</div>
+<div class="row">
+	<div class="col-6 col-12-mobile">
+		<img src="images/QiJulianIvet0.jpg" alt="" height=200 />
+		<figcaption>
+			Qi Huangfu, Julian Hall and Ivet Galabova
+		</figcaption>
+	</div>
+	<div class="col-2 col-6-mobile">
+		<img src="images/MichaelFeldmeier.jpg" alt="" height=200 />
+		<figcaption>
+			Michael Feldmeier
+		</figcaption>
+	</div>
+	<div class="col-4 col-6-mobile">
+		<br>
+		<img src="images/LukasSchork.jpg" alt="" />
+		<figcaption>
+			Lukas Schork
+		</figcaption>
+	</div>
+</div>
 			</div>
 
 		</section>
@@ -302,25 +337,25 @@ names in the <code>enum</code>.</p>
 		<section id="contact" class="four">
 			<div class="container">
 
-				<header>
-					<h2>Contact</h2>
-				</header>
+<header>
+	<h2>Contact</h2>
+</header>
 
-				<p>We would be pleased to learn about users' experience and give advice via <!--the form below or--> an email to
-					<a href="mailto:highsopt@gmail.com">highsopt@gmail.com</a>.</p>
+<p>We would be pleased to learn about users' experience and give advice via <!--the form below or--> an email to
+	<a href="mailto:highsopt@gmail.com">highsopt@gmail.com</a>.</p>
 
-				<!--form method="post" action="#">
-					<div class="row">
-						<div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="Name" /></div>
-						<div class="col-6 col-12-mobile"><input type="text" name="email" placeholder="Email" /></div>
-						<div class="col-12">
-							<textarea name="message" placeholder="Message"></textarea>
-						</div>
-						<div class="col-12">
-							<input type="submit" value="Send Message" />
-						</div>
-					</div>
-				</form-->
+<!--form method="post" action="#">
+	<div class="row">
+		<div class="col-6 col-12-mobile"><input type="text" name="name" placeholder="Name" /></div>
+		<div class="col-6 col-12-mobile"><input type="text" name="email" placeholder="Email" /></div>
+		<div class="col-12">
+			<textarea name="message" placeholder="Message"></textarea>
+		</div>
+		<div class="col-12">
+			<input type="submit" value="Send Message" />
+		</div>
+	</div>
+</form-->
 
 			</div>
 		</section>
