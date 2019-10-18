@@ -33,11 +33,10 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 <ul>
 <i class="fas "></i>
 <li><a href="#top" id="top-link"><span class="icon solid fa-home">HiGHS</span></a></li>
-<li><a href="#get-started" id="get-started-link"><span class="icon solid fa-hand-point-up">Get
-Started</span></a></li>
-<li><a href="#guide" id="guide-link"><span class="icon solid fa-book-open">Guide</span></a></li>
-<li><a href="#options" id="options-link"><span class="icon solid fa-sliders-h">Options</span></a></li>
+<li><a href="#get-started" id="get-started-link"><span class="icon solid fa-hand-point-up">Get started</span></a></li>
 <li><a href="#download" id="download-link"><span class="icon solid fa-download">Download</span></a></li>
+<li><a href="#guide" id="guide-link"><span class="icon solid fa-book-open">Guide</span></a></li>
+<li><a href="#background" id="background-link"><span class="icon solid fa-book">Background</span></a></li>
 <li><a href="#team" id="team-link"><span class="icon solid fa-users">HiGHS Team</span></a></li>
 <li><a href="#contact" id="contact-link"><span class="icon solid fa-envelope">Contact</span></a></li>
 </ul>
@@ -67,12 +66,10 @@ class="label">Github</span></a></li>
 
 <header>
 <h2 class="alt"><strong>HiGHS</strong> - high performance software <br> for linear optimization </h2>
-<p>Open source serial and parallel solver for large-scale <br> sparse linear programming (LP) problems </p>
+<p>Open source serial and parallel solver for large-scale <br> sparse linear programming problems </p>
 </header>
 
-<footer>
-<a href="#get-started" class="button scrolly">Get Started</a>
-</footer>
+<!--footer><a href="#get-started" class="button scrolly">Get Started</a></footer-->
 
 </div>
 </section>
@@ -82,77 +79,96 @@ class="label">Github</span></a></li>
 <div class="container">
 
 <header>
-<h2>Get Started</h2>
+<h2>Get started</h2>
 </header>
 
 <p> HiGHS is a high performance serial and parallel solver for
 large-scale sparse linear programming (LP) problems developed in
-C++11. HiGHS is based on the dual revised simplex method implemented
-in HSOL, which was originally written by Qi Huangfu. Features such as
-presolve, crash and advanced basis start have been added by Julian
-Hall, Ivet Galabova. Other features, and interfaces to C, C#, FORTRAN,
-Julia and Python, have been written by Michael Feldmeier. </p>
+C++11, with interfaces to C, C#, FORTRAN, Julia and Python.</p>
 
-<p> HiGHS is freely available under the MIT licence. Installing from
-source code requires CMake minimum version 3.0.0. HiGHS can be used as
-a standalone executable on Windows and Linux. There is a C++11 library
-which can be easily used within a C++ project. </p>
+<p> HiGHS is freely available under the MIT licence, and is downloaded
+from <a href="https://github.com/ERGO-Code/HiGHS"
+target="_blank">Github</a>. Installing HiGHS from source code requires
+CMake minimum version 3.0.0, but no other third-party utilities. HiGHS
+can be used as a standalone executable on Windows and Linux. There is
+a C++11 library which can be used within a C++ project or, via one of
+the interfaces, to a project written in other languages.</p>
 
-<p> Documentation can be built with doxygen as follows. Download the latest
-revision of HiGHS from <a href="https://github.com/ERGO-Code/HiGHS"
-target="_blank">here</a> and call <code>./doxygen</code> in
-<code>HiGHS/docs</code>. Load <code>HiGHS/docs/index.html</code> into
-any web browser for descriptions of methods. Note, that we are
-currently working to improve our documentation. Your comments or
-specific questions would be greatly appreciated so please
-use <!--the form below or--> send an email to
-<a href="mailto:highsopt@gmail.com">highsopt@gmail.com</a> to
-submit any queries. </p>
+<p> Information on how to install and use HiGHS is given in
+the <a href="#guide">guide</a> below, and full documentation can be
+built using doxygen. Your comments or specific questions on HiGHS
+would be greatly appreciated, so please <!--use the form below or
+-->send an email to
+<a href="mailto:highsopt@gmail.com">highsopt@gmail.com</a> to get in
+touch with the team.</p>
 
 <img src="images/HiGHS_banner.png" width="250" alt="" class="center" />
 
 </div>
 </section>
 
-<section id="guide" class="three">
+<!-- Download -->
+<section id="download" class="three">
+<div class="container">
+
+<header>
+<h2>Download</h2>
+</header>
+
+<p>HiGHS is downloaded
+from <a href="https://github.com/ERGO-Code/HiGHS">
+https://github.com/ERGO-Code/HiGHS </a>. The latest revision (version
+1.0.0) is <code>master</code>. In the instructions below on building
+HiGHS, running it as an executable and installing its library, HiGHS
+is assumed to have been downloaded to a folder
+called <code>HiGHS</code>.</p>
+
+</div>
+</section>
+
+<section id="guide" class="two">
 <div class="container">
 
 <header>
 <h2>Guide</h2>
 </header>
-  <p>This guide sets out <a href="#specification">what HiGHS can be used for</a>, and how
-  to <a href="#build_highs">build</a> and use it. HiGHS can be
-  run <a href="#run_highs_from_command_line">from a command line</a>
-  or from <a href="#run_highs_from_application">within another
-  application</a> via a <a href="#highs_library">library</a>.</p>
+
+<p>This guide sets out <a href="#specification">what HiGHS can be used
+for</a>, and how to <a href="#build_highs">build</a> and use it. HiGHS
+can be run from a <a href="#run_highs_from_command_line">command
+line</a> or by calling it from within
+another <a href="#run_highs_from_application">application</a> via
+a <a href="#highs_library">library</a>.</p>
 
 <h3 id="specification">Specification</h3>
-  <p>HiGHS can load LP and MIP models from either data files, or via
+  <p>HiGHS can load LP <!--and MIP--> models from data files or via
   data provided by another application. It can solve LP problems using
-  the dual revised simplex method and MIP problems using
-  branch-and-bound. The solution can be written to a file or retrieved
-  directly for use within an application. When used within an
-  application, HiGHS can be used to modify the current problem and
-  re-solve it efficiently.</p>
+  the dual revised simplex method. <!--and MIP problems using
+  branch-and-bound.--> The solution can be written to a file or retrieved
+  directly for use within an application. Within an application, HiGHS
+  can be used to modify the current problem and re-solve it
+  efficiently.</p>
 
 <h3 id="build_highs">Building HiGHS</h3>
-<p>HiGHS uses CMake as a build system. First setup a build folder
-and call CMake as follows
+<p>HiGHS uses CMake as a build system. The simplest setup is to create
+a build folder (within the folder into which HiGHS has been
+downloaded) and then build HiGHS within it. The name of the build
+folder is arbitrary but, assuming it is <code>HiGHS/build</code>, the
+full sequence of commands required is as follows
   <pre><code>  mkdir build
   cd build
   cmake ..
-</code></pre>
-<p>Then compile the code using</p>
-<pre><code>  make</code></pre>
-<p>This installs the executable <code>bin/highs</code>. To perform a
-quick test to see whether the compilation was successful, run
-<pre><code>  ctest</code></pre>
+  make</code></pre>
+<p>This creates the executable <code>build/bin/highs</code>. To perform a
+quick test to see whether the compilation was successful,
+run <code>ctest</code> from within the build folder.</p>
 
 <h3 id="run_highs_from_command_line">Running HiGHS from the command line</h3>
 <p>In the following discussion, the name of the executable file
-generated is assumed to be <code>highs</code>. HiGHS can read plain
-text MPS files and LP files (but not compressed files), and the
-following command solves the model in <code>ml.mps</code>
+created in <code>build/bin</code> when building HiGHS is assumed to
+be <code>highs</code>. HiGHS can read plain text MPS files and LP
+files (but not compressed files), and the following command solves the
+model in <code>ml.mps</code>
 <pre><code>  highs ml.mps</code></pre>
 <p>HiGHS is controlled by means of options. Some may be specified
 directly on the command line. Many more are specified via a
@@ -169,12 +185,11 @@ file. Formally, the usage is
 <tr><td><code>-h, --help             </code></td><td><pre>Print help.</pre></tr>
   </table>
 
-<p>A full specification of these options, and all options that are
-specified via a file, is given <a href="HighsOptions.html"
-target="_blank">here</a>. Within an options file, values are specified
-line-by-line as <code>option_name = value</code>. An example file
-containing default settings of all options
-is <a href="HighsOptions.set" target="_blank">here</a>.
+<p>A full specification of all HiGHS options is
+given <a href="HighsOptions.html" target="_blank">here</a>. Within an
+options file, values are specified line-by-line as <code>option_name =
+value</code>. An example file containing default settings of all
+options is <a href="HighsOptions.set" target="_blank">here</a>.
 
 <p>Note that by setting the values of
   options <code>solution_file</code>, <code>write_solution_to_file</code>
@@ -205,9 +220,7 @@ is <a href="HighsOptions.set" target="_blank">here</a>.
   consistent name extension. The discussion below refers to the C++
   methods, followed by an account of the language-specific
   characteristics of
-  the <a href="#language_interfaces">interfaces</a>. For full
-  information on the detailed use of the HiGHS methods discussed,
-  consult the documentation built with doxygen.</p>
+  the <a href="#language_interfaces">interfaces</a>. 
 
 <p>Example programs calling HiGHS from C, C#, FORTRAN, Julia and
 Python are in <code>HiGHS/examples</code>.</p>
@@ -218,9 +231,17 @@ Python are in <code>HiGHS/examples</code>.</p>
   some cases this is a value of <code>HighsStatus</code>, and in
   others it is simply a boolean.</p>
 
+<p>
+For full information on the detailed use of the HiGHS methods
+discussed below, consult the documentation built
+with <code>doxygen</code>. This is created by
+calling <code>./doxygen</code> in <code>HiGHS/docs</code> and viewed
+by loading <code>HiGHS/docs/index.html</code> into any web
+browser.</p>
+  
 <!--p>HiGHS can also be called via the following specific interfaces: <a href="#osi_interface">OSI</a> and <a href="#gams_interface">GAMS</a></p-->
 
-<h4 id="load_a_model">Load a model</h4>
+<h4 id="load_a_model">Loading a model</h4>
 
 <p>The simplest way to use HiGHS to solve a problem is to load a model
 from a file using the method <code>readModel</code>. Different file
@@ -232,11 +253,11 @@ passed using the method <code>passModel</code>. In languages where
 such structures cannot be used, data constituting an LP problem can be
 passed via individual parameters.</p>
 
-<h4 id="solve_a_model">Solve a model</h4>
+<h4 id="solve_a_model">Solving a model</h4>
 
 <p>HiGHS is used to solve a problem by calling the method <code>run</code>.</p>
 
-<h4 id="extract_results">Extract the results</h4>
+<h4 id="extract_results">Extracting the results</h4>
 
 <p>After solving a model, its status is the value returned
 by the method <code>getModelStatus</code>. This value is of
@@ -245,7 +266,7 @@ names in the corresponding <code>enum</code>. The objective function
 value and iteration count are obtained
 using the methods <code>getObjectiveValue</code>
 and <code>getIterationCount</code>. The solution and basis are
-returned by the methods <code>getSolution</code> and <code>getSolution</code>
+returned by the methods <code>getSolution</code> and <code>getBasis</code>
 respectively. Note that these are <code>const</code> references to internal
 data. HiGHS can also be used to write the solution to a file
 using the method <code>writeSolution</code>, with the output going
@@ -264,7 +285,7 @@ returns a <code>HighsStatus</code> error if the name is unrecognised
 or the value is illegal. The current value of an option is obtained by
 passing its name to the method <code>getHighsOptionValue</code>.
 
-<h4 id="extract_model_data">Extract model data</h4>
+<h4 id="extract_model_data">Extracting model data</h4>
 
 <p>The numbers of column, rows and nonzeros in the model are returned
 by the methods <code>getNumCols</code>, <code>getNumRows</code>
@@ -273,15 +294,18 @@ rows from the model may be extracted using the methods <code>getCols</code>
 and <code>getRows</code>, and specific matrix coefficients obtained
 using the method <code>getCoeff</code>.</p>
 
-<h4 id="modify_a_model">Modify a model</h4>
+<h4 id="modify_a_model">Modifying a model</h4>
 
 <h4 id="other_operations">Other operations</h4>
 
 <h4 id="highs_library">Library</h4>
 
-<p>HiGHS is compiled in a shared library. Running</p>
+<p>HiGHS may be used to create a shared library. Running</p>
 <pre><code>  make install</code></pre>
-<p>from the build folder installs the library in <code>lib/</code>, as well as all header files in <code>include/</code>. For a custom installation in <code>install_folder</code> run</p>
+<p>from the build folder installs the library
+in <code>WHERE/lib</code>, as well as all header files
+in <code>WHERE/include</code>. For a custom installation based
+in <code>install_folder</code> run</p>
 <pre><code>  cmake .. -DCMAKE_INSTALL_PREFIX=install_folder</code></pre>
 <p>
 and then</p>
@@ -296,7 +320,10 @@ to <code>HIGHS_DIR</code>.</p>
 
 <h5 id="highs_library_without_cmake">Compiling and linking without CMake</h5>
 
-<p>An executable defined in the file <code>use_highs.cpp</code> is linked with the HiGHS library as follows. After running the code above, compile and run with</p>
+<p>An executable defined in the file <code>use_highs.cpp</code> is
+linked with the HiGHS library as follows. Assuming that the custom
+installation is based in <code>install_folder</code>, compile and run
+with</p>
 <pre><code>  g++ -o use_highs use_highs.cpp -I install_folder/include/ -L install_folder/lib/ -lhighs
   LD_LIBRARY_PATH=install_folder/lib/ ./use_highs</code></pre>
 <p></p>
@@ -320,30 +347,28 @@ for the C++ interface.</p>
 </div>
 </section>
 
-<section id="options" class="two">
+<!-- Background -->
+<section id="background" class="three">
 <div class="container">
 
 <header>
-<h2>Options</h2>
+<h2>Background</h2>
 </header>
 
-<p>
-HiGHS options are specified <a href="HighsOptions.html" target="_blank">here</a>.</p>
-</div>
-</section>
+<p>HiGHS is based on the high performance dual revised simplex
+implementation (HSOL) and its parallel variant (PAMI) developed by Qi
+Huangfu. Features such as presolve, crash and advanced basis start
+have been added by Julian Hall and Ivet Galabova. Other features and
+the interfaces have been written by Michael Feldmeier.
+</p>
+<h3 id="citation">Citation</h3>
 
-<!-- Download -->
-<section id="download" class="three">
-<div class="container">
+<p>In the absence of a release paper, academic users of HiGHS are politely requested to cite the following article</p>
 
-<header>
-<h2>Download</h2>
-</header>
-
-<p> Download the latest revision of HiGHS from <a href="https://github.com/ERGO-Code/HiGHS">
-https://github.com/ERGO-Code/HiGHS </a> and follow the instructions in HiGHS/README.md. </p>
+<p>Parallelizing the dual revised simplex method, Q. Huangfu and J. A. J. Hall, <em>Mathematical Programming Computation</em>, <strong>10</strong> (1), 119-142, 2018. DOI: <a href="https://link.springer.com/article/10.1007/s12532-017-0130-5" target="_blank">10.1007/s12532-017-0130-5</a></p>
 
 </div>
+
 </section>
 
 <!-- Team -->
@@ -387,8 +412,11 @@ Lukas Schork
 <h2>Contact</h2>
 </header>
 
-<p>We would be pleased to learn about users' experience and give advice via <!--the form below or--> an email to
-<a href="mailto:highsopt@gmail.com">highsopt@gmail.com</a>.</p>
+<p>Your comments or specific questions on HiGHS
+would be greatly appreciated, so please <!--use the form below or
+-->send an email to
+<a href="mailto:highsopt@gmail.com">highsopt@gmail.com</a> to get in
+touch with the team.</p>
 
 <!--form method="post" action="#">
 <div class="row">
