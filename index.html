@@ -98,7 +98,7 @@ source code requires CMake minimum version 3.0.0. HiGHS can be used as
 a standalone executable on Windows and Linux. There is a C++11 library
 which can be easily used within a C++ project. </p>
 
-<p> Documentation can be built with doxygen<. Download the latest
+<p> Documentation can be built with doxygen as follows. Download the latest
 revision of HiGHS from <a href="https://github.com/ERGO-Code/HiGHS"
 target="_blank">here</a> and call <code>./doxygen</code> in
 <code>HiGHS/docs</code>. Load <code>HiGHS/docs/index.html</code> into
@@ -151,8 +151,8 @@ quick test to see whether the compilation was successful, run
 <h3 id="run_highs_from_command_line">Running HiGHS from the command line</h3>
 <p>In the following discussion, the name of the executable file
 generated is assumed to be <code>highs</code>. HiGHS can read plain
-text MPS files and LP files and the following command solves the model
-in <code>ml.mps</code>
+text MPS files and LP files (but not compressed files), and the
+following command solves the model in <code>ml.mps</code>
 <pre><code>  highs ml.mps</code></pre>
 <p>HiGHS is controlled by means of options. Some may be specified
 directly on the command line. Many more are specified via a
@@ -290,10 +290,9 @@ and then</p>
 
 <h5 id="highs_library_with_cmake">Using HiGHS in a CMake project</h5>
 
-<p>To use the library from a CMake project use</p>
-<pre><code>  find_package(HiGHS)</code></pre>
-<p>
-and add the correct path to <code>HIGHS_DIR</code>.
+<p>To use the library from a CMake project
+use <code>find_package(HiGHS)</code> and add the correct path
+to <code>HIGHS_DIR</code>.</p>
 
 <h5 id="highs_library_without_cmake">Compiling and linking without CMake</h5>
 
