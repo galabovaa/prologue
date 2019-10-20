@@ -117,10 +117,11 @@ touch with the team.</p>
 
 <p>HiGHS is downloaded
 from <a href="https://github.com/ERGO-Code/HiGHS">
-https://github.com/ERGO-Code/HiGHS </a>. The latest revision (version
-1.0.0) is <code>master</code>. In the instructions below on building
-HiGHS, running it as an executable and installing its library, HiGHS
-is assumed to have been downloaded to a folder
+https://github.com/ERGO-Code/HiGHS </a>. A simple cloned copy is
+obtained by the command<pre><code>  git clone git@github.com:ERGO-Code/HiGHS.git</code></pre><p>The latest revision
+(version 1.0.0) is <code>master</code>. In the instructions below on
+building HiGHS, running it as an executable and installing its
+library, HiGHS is assumed to have been downloaded to a folder
 called <code>HiGHS</code>.</p>
 
 </div>
@@ -351,12 +352,12 @@ variables. This is obtained using the
 method <code>getBasicVariables</code>, with non-negative values being
 columns and negative values corresponding to row indices plus one [so
 -1 indicates row 0]. Methods <code>getBasisInverseRow</code>
-and <code>getBasisInverseRow</code> yield a specific row or column
-of <math>B^{-1}</math>. Methods <code>getBasisSolve</code>
+and <code>getBasisInverseCol</code> yield a specific row or column
+of <math>B<sup>-1</sup></math>. Methods <code>getBasisSolve</code>
 and <code>getBasisTransposeSolve</code> yield the solution
 of <math>Bx=b</math> and <math>Bx=b</math> respectively. Finally, the
 methods <code>getReducedRow</code> and <code>getReducedColumn</code>
-yield a specific row or column of <math>B^{-1}A</math>. In all cases,
+yield a specific row or column of <math>B<sup>-1</sup>A</math>. In all cases,
 HiGHS can return the number and indices of the nonzeros in the result.
 </p>
 
