@@ -364,9 +364,10 @@ HiGHS can return the number and indices of the nonzeros in the result.
 
 <p>HiGHS may be used to create a shared library. Running</p>
 <pre><code>  make install</code></pre>
-<p>from the build folder installs the library
-in <code>WHERE/lib</code>, as well as all header files
-in <code>WHERE/include</code>. For a custom installation based
+<p>from the build folder attempts to install the executable
+in <code>/usr/local/bin</code>, the library
+in <code>/usr/local/lib</code>, and the header files
+in <code>/usr/local/include</code>. For a custom installation based
 in <code>install_folder</code> run</p>
 <pre><code>  cmake .. -DCMAKE_INSTALL_PREFIX=install_folder</code></pre>
 <p>
