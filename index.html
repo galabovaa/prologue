@@ -36,6 +36,7 @@ Free for personal and commercial use under the CCA 3.0 license (html5up.net/lice
 <li><a href="#get-started" id="get-started-link"><span class="icon solid fa-hand-point-up">Get started</span></a></li>
 <li><a href="#download" id="download-link"><span class="icon solid fa-download">Download</span></a></li>
 <li><a href="#guide" id="guide-link"><span class="icon solid fa-book-open">Guide</span></a></li>
+<li><a href="#options" id="guide-link"><span class="icon solid fa-sliders-h">Options</span></a></li>
 <li><a href="#background" id="background-link"><span class="icon solid fa-book">Background</span></a></li>
 <li><a href="#team" id="team-link"><span class="icon solid fa-users">HiGHS team</span></a></li>
 <li><a href="#contact" id="contact-link"><span class="icon solid fa-envelope">Contact</span></a></li>
@@ -66,10 +67,10 @@ class="label">Github</span></a></li>
 
 <header>
 <h2 class="alt"><strong>HiGHS</strong> - high performance software <br> for linear optimization </h2>
-<p>Open source serial and parallel solver for large-scale <br> sparse linear programming models </p>
+<p><div>Open source serial and parallel solver for large-scale <br> sparse linear programming (LP) models </div></p>
 </header>
 
-<!--footer><a href="#get-started" class="button scrolly">Get Started</a></footer-->
+<footer><a href="#download" class="button scrolly">Download</a></footer>
 
 </div>
 </section>
@@ -171,41 +172,15 @@ be <code>highs</code>. HiGHS can read plain text MPS files and LP
 files (but not compressed files), and the following command solves the
 model in <code>ml.mps</code>
 <pre><code>  highs ml.mps</code></pre>
-<p>HiGHS is controlled by means of options. Some may be specified
-directly on the command line. Many more are specified via a
-file. Formally, the usage is
-  <pre><code>  highs [OPTION...] [file]</code></pre>
-<p>using the following options.
-<table>
-<tr><td><code>--model_file arg       </code></td><td><pre>File of model to solve.</pre></tr>
-<tr><td><code>--presolve arg         </code></td><td><pre>Presolve: "choose" by default - "on"/"off" are alternatives.</pre></tr>
-<tr><td><code>--solver arg           </code></td><td><pre>Solver: "choose" by default - "simplex"/"ipm" are alternatives.</pre></tr>
-<tr><td><code>--parallel arg         </code></td><td><pre>Parallel solve: "choose" by default - "on"/"off" are alternatives.</pre></tr>
-<tr><td><code>--time_limit arg       </code></td><td><pre>Run time limit (double).</pre></tr>
-<tr><td><code>--options_file arg     </code></td><td><pre>File containing HiGHS options.</pre></tr>
-<tr><td><code>-h, --help             </code></td><td><pre>Print help.</pre></tr>
-  </table>
+<p>HiGHS is controlled by means of <a href="#options">options</a>.</p>
 
-<p>A full specification of all HiGHS options is
-given <a href="HighsOptions.html" target="_blank">here</a>. Within an
-options file, values are specified line-by-line as <code>option_name =
-value</code>. An example file containing default settings of all
-options is <a href="HighsOptions.set" target="_blank">here</a>.
-
-<p>Note that by setting the values of
-  options <code>solution_file</code>, <code>write_solution_to_file</code>
-  and <code>write_solution_pretty</code> appropriately, it is possible
-  to write the solution to <code>stdout</code> (by setting <code>solution_file
-  = ""</code>) or to a file in either a pretty (human-readable) format
-  or simple (computer-readable) format.
-  
-  <h3 id="run_highs_from_application">Running HiGHS from within an application</h3>
+<h3 id="run_highs_from_application">Running HiGHS from within an application</h3>
 
 <p>To run HiGHS from an application, the key requirements are
   to <a href="#load_a_model">load a
   model</a>, <a href="#solve_a_model">solve it</a>
   and <a href="#extract_results">extract the results</a>. Many users
-  will want to get and set <a href="#option_values">option values</a>
+  will want to get and set <a href="#options">option values</a>
   to control the way HiGHS runs. It is also possible
   to <a href="#extract_model_data">extract model data</a>
   and <a href="#modify_a_model">modify a model</a>. HiGHS can
@@ -274,19 +249,6 @@ respectively. Note that these are <code>const</code> references to internal
 data. HiGHS can also be used to write the solution to a file
 using the method <code>writeSolution</code>, with the output going
 to <code>stdout</code> if the filename is blank.</p>
-
-<h4 id="option_values">Option values</h4>
-
-<p>The option values that control HiGHS are of
-type <code>string</code>, <code>bool</code>, <code>int</code>
-and <code>double</code>. Options are referred to by
-a <code>string</code> identical to the name of their identifier. A
-full specification of the options is given <a href="HighsOptions.html"
-target="_blank">here</a>. An option value is changed by passing its
-name and value to the method <code>setHighsOptionValue</code>. This
-returns a <code>HighsStatus</code> error if the name is unrecognised
-or the value is illegal. The current value of an option is obtained by
-passing its name to the method <code>getHighsOptionValue</code>.
 
 <h4 id="extract_model_data">Extracting model data</h4>
 
@@ -411,8 +373,63 @@ for the C++ interface.</p>
 </div>
 </section>
 
+<!-- Options -->
+<section id="options" class="three">
+<div class="container">
+
+<header>
+<h2>Options</h2>
+</header>
+
+<p>The option values that control HiGHS are of
+type <code>string</code>, <code>bool</code>, <code>int</code>
+and <code>double</code>. Options are referred to by
+a <code>string</code> identical to the name of their identifier. A
+full specification of the options is given <a href="HighsOptions.html"
+target="_blank">here</a>.</p>
+
+<h3 id="command_line_option_values">Option values for the command line</h3>
+<p>When HiGHS is run from the command line, some fundamental option
+values may be specified directly. Many more may be specified via a
+file. Formally, the usage is
+  <pre><code>  highs [OPTION...] [file]</code></pre>
+<p>using the following options.
+<table>
+<tr><td><code>--model_file arg       </code></td><td><pre>File of model to solve.</pre></tr>
+<tr><td><code>--presolve arg         </code></td><td><pre>Presolve: "choose" by default - "on"/"off" are alternatives.</pre></tr>
+<tr><td><code>--solver arg           </code></td><td><pre>Solver: "choose" by default - "simplex"/"ipm" are alternatives.</pre></tr>
+<tr><td><code>--parallel arg         </code></td><td><pre>Parallel solve: "choose" by default - "on"/"off" are alternatives.</pre></tr>
+<tr><td><code>--time_limit arg       </code></td><td><pre>Run time limit (double).</pre></tr>
+<tr><td><code>--options_file arg     </code></td><td><pre>File containing HiGHS options.</pre></tr>
+<tr><td><code>-h, --help             </code></td><td><pre>Print help.</pre></tr>
+  </table>
+
+<p>Within an options file, values are specified line-by-line
+as <code>option_name = value</code>. An example file containing
+default settings of all options is <a href="HighsOptions.set"
+target="_blank">here</a>.
+
+<p>Note that by setting the values of
+options <code>solution_file</code>, <code>write_solution_to_file</code>
+and <code>write_solution_pretty</code> appropriately, it is possible
+to write the solution to <code>stdout</code> (by
+setting <code>solution_file = ""</code>) or to a file in either a
+pretty (human-readable) or simple (computer-readable) format.</p>
+
+<h3 id="application_option_values">Option values in applications</h3>
+  
+<p>When HiGHS is run from an application, an option value is changed by passing its
+name and value to the method <code>setHighsOptionValue</code>. This
+returns a <code>HighsStatus</code> error if the name is unrecognised
+or the value is illegal. The current value of an option is obtained by
+passing its name to the method <code>getHighsOptionValue</code>.</p>
+
+</div>
+
+</section>
+
 <!-- Background -->
-<section id="background" class="three">
+<section id="background" class="two">
 <div class="container">
 
 <header>
@@ -427,7 +444,7 @@ the interfaces have been written by Michael Feldmeier.
 </p>
 <h3 id="citation">Citation</h3>
 
-<p>In the absence of a release paper, academic users of HiGHS are politely requested to cite the following article</p>
+<p>In the absence of a release paper, academic users of HiGHS are kindly requested to cite the following article</p>
 
 <p>Parallelizing the dual revised simplex method, Q. Huangfu and J. A. J. Hall, <em>Mathematical Programming Computation</em>, <strong>10</strong> (1), 119-142, 2018. DOI: <a href="https://link.springer.com/article/10.1007/s12532-017-0130-5" target="_blank">10.1007/s12532-017-0130-5</a></p>
 
@@ -436,7 +453,7 @@ the interfaces have been written by Michael Feldmeier.
 </section>
 
 <!-- Team -->
-<section id="team" class="two">
+<section id="team" class="three">
 <div class="container">
 
 <header>
