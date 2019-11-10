@@ -418,11 +418,16 @@ pretty (human-readable) or simple (computer-readable) format.</p>
 
 <h3 id="application_option_values">Option values in applications</h3>
   
-<p>When HiGHS is run from an application, an option value is changed by passing its
-name and value to the method <code>setHighsOptionValue</code>. This
-returns a <code>HighsStatus</code> error if the name is unrecognised
-or the value is illegal. The current value of an option is obtained by
-passing its name to the method <code>getHighsOptionValue</code>.</p>
+<p>When HiGHS is run from an application, options values can be read
+from a file using the method <code>readHighsOptionValue</code>, and
+modified values in an instance of the <code>HighsOptions</code> can be
+passed to HiGHS via the method <code>passHighsOptions</code>. The
+value of an individual option can be changed by passing its name and
+value to the method <code>setHighsOptions</code>. These methods
+return a <code>HighsStatus</code> error if an option name is
+unrecognised or the value is illegal. The current value of an option
+is obtained by passing its name to the
+method <code>getHighsOptionValue</code>.</p>
 
 </div>
 
