@@ -1,7 +1,7 @@
 
 # Model file
 # [type: string, advanced: false, default: ""]
-model_file = 
+model_file = ""
 
 # Presolve option: "off", "choose" or "on"
 # [type: string, advanced: false, default: "choose"]
@@ -56,7 +56,7 @@ dual_objective_value_upper_bound = 1e+200
 simplex_strategy = 1
 
 # Strategy for scaling before simplex solver: off / on (0/1)
-# [type: int, advanced: false, range: {0, 2}, default: 1]
+# [type: int, advanced: false, range: {0, 3}, default: 1]
 simplex_scale_strategy = 1
 
 # Strategy for simplex crash: off / LTSSF / Bixby (0/1/2)
@@ -103,9 +103,13 @@ mps_parser_type_free = true
 # [type: int, advanced: true, range: {-1, 1}, default: -1]
 keep_n_rows = -1
 
-# Largest power-of-two factor permitted when scaling for the simplex solver
+# Largest power-of-two factor permitted when scaling the constraint matrix for the simplex solver
 # [type: int, advanced: true, range: {0, 20}, default: 10]
-allowed_simplex_scale_factor = 10
+allowed_simplex_matrix_scale_factor = 10
+
+# Largest power-of-two factor permitted when scaling the costs for the simplex solver
+# [type: int, advanced: true, range: {0, 20}, default: 0]
+allowed_simplex_cost_scale_factor = 0
 
 # Strategy for dualising before simplex
 # [type: int, advanced: true, range: {-1, 1}, default: -1]
@@ -137,15 +141,35 @@ simplex_perturb_costs = true
 
 # Run iCrash
 # [type: bool, advanced: true, range: {false, true}, default: false]
-find_feasibility = false
-
-# Strategy for iCrash
-# [type: int, advanced: true, range: {0, 2}, default: 0]
-feasibility_strategy = 0
+icrash = false
 
 # Dualise strategy for iCrash
 # [type: bool, advanced: true, range: {false, true}, default: false]
-feasibility_strategy_dualize = false
+icrash_dualize = false
+
+# Strategy for iCrash
+# [type: string, advanced: true, default: "ICA"]
+icrash_strategy = ICA
+
+# iCrash starting weight
+# [type: double, advanced: true, range: [1e-10, 1e+50], default: 0.001]
+icrash_starting_weight = 0.001
+
+# iCrash iterations
+# [type: int, advanced: true, range: {0, 200}, default: 30]
+icrash_iterations = 30
+
+# Exact subproblem solution for iCrash
+# [type: bool, advanced: true, range: {false, true}, default: false]
+icrash_exact = false
+
+# Exact subproblem solution for iCrash
+# [type: bool, advanced: true, range: {false, true}, default: false]
+icrash_breakpoints = false
+
+# iCrash approximate minimization iterations
+# [type: int, advanced: true, range: {0, 100}, default: 50]
+icrash_approximate_minimization_iterations = 50
 
 # Run MIP solver
 # [type: bool, advanced: true, range: {false, true}, default: false]
