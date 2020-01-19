@@ -32,10 +32,6 @@ type: string, advanced: false, default: "choose"
 Time limit<br>
 type: double, advanced: false, range: [0, 1e+200], default: 1e+200
 </li>
-<li><tt><font size="+2"><strong>simplex_iteration_limit</strong></font></tt><br>
-Iteration limit for simplex solver<br>
-type: int, advanced: false, range: {0, 2147483647}, default: 2147483647
-</li>
 <li><tt><font size="+2"><strong>infinite_cost</strong></font></tt><br>
 Limit on cost coefficient: values larger than this will be treated as infinite<br>
 type: double, advanced: false, range: [1e+15, 1e+25], default: 1e+20
@@ -84,9 +80,21 @@ type: int, advanced: false, range: {0, 4}, default: 2
 Strategy for simplex primal edge weights: Dantzig / Devex (0/1)<br>
 type: int, advanced: false, range: {0, 1}, default: 0
 </li>
+<li><tt><font size="+2"><strong>simplex_iteration_limit</strong></font></tt><br>
+Iteration limit for simplex solver<br>
+type: int, advanced: false, range: {0, 2147483647}, default: 2147483647
+</li>
 <li><tt><font size="+2"><strong>simplex_update_limit</strong></font></tt><br>
 Limit on the number of simplex UPDATE operations<br>
 type: int, advanced: false, range: {0, 2147483647}, default: 5000
+</li>
+<li><tt><font size="+2"><strong>highs_min_threads</strong></font></tt><br>
+Minimum number of threads in parallel execution<br>
+type: int, advanced: false, range: {1, 8}, default: 1
+</li>
+<li><tt><font size="+2"><strong>highs_max_threads</strong></font></tt><br>
+Maximum number of threads in parallel execution<br>
+type: int, advanced: false, range: {1, 8}, default: 8
 </li>
 <li><tt><font size="+2"><strong>message_level</strong></font></tt><br>
 HiGHS message level: bit-mask 1 => VERBOSE; 2 => DETAILED 4 => MINIMAL<br>
