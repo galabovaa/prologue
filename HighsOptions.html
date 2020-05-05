@@ -30,7 +30,7 @@ type: string, advanced: false, default: "choose"
 </li>
 <li><tt><font size="+2"><strong>time_limit</strong></font></tt><br>
 Time limit<br>
-type: double, advanced: false, range: [0, 1e+200], default: 1e+200
+type: double, advanced: false, range: [0, inf], default: inf
 </li>
 <li><tt><font size="+2"><strong>infinite_cost</strong></font></tt><br>
 Limit on cost coefficient: values larger than this will be treated as infinite<br>
@@ -42,7 +42,7 @@ type: double, advanced: false, range: [1e+15, 1e+25], default: 1e+20
 </li>
 <li><tt><font size="+2"><strong>small_matrix_value</strong></font></tt><br>
 Lower limit on |matrix entries|: values smaller than this will be treated as zero<br>
-type: double, advanced: false, range: [1e-12, 1e+200], default: 1e-09
+type: double, advanced: false, range: [1e-12, inf], default: 1e-09
 </li>
 <li><tt><font size="+2"><strong>large_matrix_value</strong></font></tt><br>
 Upper limit on |matrix entries|: values larger than this will be treated as infinite<br>
@@ -50,15 +50,19 @@ type: double, advanced: false, range: [1, 1e+20], default: 1e+15
 </li>
 <li><tt><font size="+2"><strong>primal_feasibility_tolerance</strong></font></tt><br>
 Primal feasibility tolerance<br>
-type: double, advanced: false, range: [1e-10, 1e+200], default: 1e-07
+type: double, advanced: false, range: [1e-10, inf], default: 1e-07
 </li>
 <li><tt><font size="+2"><strong>dual_feasibility_tolerance</strong></font></tt><br>
 Dual feasibility tolerance<br>
-type: double, advanced: false, range: [1e-10, 1e+200], default: 1e-07
+type: double, advanced: false, range: [1e-10, inf], default: 1e-07
 </li>
 <li><tt><font size="+2"><strong>dual_objective_value_upper_bound</strong></font></tt><br>
 Upper bound on objective value for dual simplex: algorithm terminates if reached<br>
-type: double, advanced: false, range: [-1e+200, 1e+200], default: 1e+200
+type: double, advanced: false, range: [-inf, inf], default: inf
+</li>
+<li><tt><font size="+2"><strong>highs_debug_level</strong></font></tt><br>
+Debugging level in HiGHS<br>
+type: int, advanced: false, range: {0, 3}, default: 0
 </li>
 <li><tt><font size="+2"><strong>simplex_strategy</strong></font></tt><br>
 Strategy for simplex solver<br>
@@ -66,7 +70,7 @@ type: int, advanced: false, range: {0, 4}, default: 1
 </li>
 <li><tt><font size="+2"><strong>simplex_scale_strategy</strong></font></tt><br>
 Strategy for scaling before simplex solver: off / on (0/1)<br>
-type: int, advanced: false, range: {0, 3}, default: 1
+type: int, advanced: false, range: {0, 5}, default: 2
 </li>
 <li><tt><font size="+2"><strong>simplex_crash_strategy</strong></font></tt><br>
 Strategy for simplex crash: off / LTSSF / Bixby (0/1/2)<br>
@@ -87,6 +91,10 @@ type: int, advanced: false, range: {0, 2147483647}, default: 2147483647
 <li><tt><font size="+2"><strong>simplex_update_limit</strong></font></tt><br>
 Limit on the number of simplex UPDATE operations<br>
 type: int, advanced: false, range: {0, 2147483647}, default: 5000
+</li>
+<li><tt><font size="+2"><strong>ipm_iteration_limit</strong></font></tt><br>
+Iteration limit for IPM solver<br>
+type: int, advanced: false, range: {0, 2147483647}, default: 2147483647
 </li>
 <li><tt><font size="+2"><strong>highs_min_threads</strong></font></tt><br>
 Minimum number of threads in parallel execution<br>
@@ -111,6 +119,14 @@ type: bool, advanced: false, range: {false, true}, default: false
 <li><tt><font size="+2"><strong>write_solution_pretty</strong></font></tt><br>
 Write the primal and dual solution in a pretty (human-readable) format<br>
 type: bool, advanced: false, range: {false, true}, default: false
+</li>
+<li><tt><font size="+2"><strong>mip_max_nodes</strong></font></tt><br>
+MIP solver max number of nodes<br>
+type: int, advanced: false, range: {0, 2147483647}, default: 2147483647
+</li>
+<li><tt><font size="+2"><strong>mip_report_level</strong></font></tt><br>
+MIP solver reporting level<br>
+type: int, advanced: false, range: {0, 2}, default: 1
 </li>
 </ul>
 </body>

@@ -1,7 +1,7 @@
 
 # Model file
 # [type: string, advanced: false, default: ""]
-model_file = ""
+model_file = 
 
 # Presolve option: "off", "choose" or "on"
 # [type: string, advanced: false, default: "choose"]
@@ -16,8 +16,8 @@ solver = choose
 parallel = choose
 
 # Time limit
-# [type: double, advanced: false, range: [0, 1e+200], default: 1e+200]
-time_limit = 1e+200
+# [type: double, advanced: false, range: [0, inf], default: inf]
+time_limit = inf
 
 # Limit on cost coefficient: values larger than this will be treated as infinite
 # [type: double, advanced: false, range: [1e+15, 1e+25], default: 1e+20]
@@ -28,7 +28,7 @@ infinite_cost = 1e+20
 infinite_bound = 1e+20
 
 # Lower limit on |matrix entries|: values smaller than this will be treated as zero
-# [type: double, advanced: false, range: [1e-12, 1e+200], default: 1e-09]
+# [type: double, advanced: false, range: [1e-12, inf], default: 1e-09]
 small_matrix_value = 1e-09
 
 # Upper limit on |matrix entries|: values larger than this will be treated as infinite
@@ -36,24 +36,28 @@ small_matrix_value = 1e-09
 large_matrix_value = 1e+15
 
 # Primal feasibility tolerance
-# [type: double, advanced: false, range: [1e-10, 1e+200], default: 1e-07]
+# [type: double, advanced: false, range: [1e-10, inf], default: 1e-07]
 primal_feasibility_tolerance = 1e-07
 
 # Dual feasibility tolerance
-# [type: double, advanced: false, range: [1e-10, 1e+200], default: 1e-07]
+# [type: double, advanced: false, range: [1e-10, inf], default: 1e-07]
 dual_feasibility_tolerance = 1e-07
 
 # Upper bound on objective value for dual simplex: algorithm terminates if reached
-# [type: double, advanced: false, range: [-1e+200, 1e+200], default: 1e+200]
-dual_objective_value_upper_bound = 1e+200
+# [type: double, advanced: false, range: [-inf, inf], default: inf]
+dual_objective_value_upper_bound = inf
+
+# Debugging level in HiGHS
+# [type: int, advanced: false, range: {0, 3}, default: 0]
+highs_debug_level = 0
 
 # Strategy for simplex solver
 # [type: int, advanced: false, range: {0, 4}, default: 1]
 simplex_strategy = 1
 
 # Strategy for scaling before simplex solver: off / on (0/1)
-# [type: int, advanced: false, range: {0, 3}, default: 1]
-simplex_scale_strategy = 1
+# [type: int, advanced: false, range: {0, 5}, default: 2]
+simplex_scale_strategy = 2
 
 # Strategy for simplex crash: off / LTSSF / Bixby (0/1/2)
 # [type: int, advanced: false, range: {0, 9}, default: 0]
@@ -74,6 +78,10 @@ simplex_iteration_limit = 2147483647
 # Limit on the number of simplex UPDATE operations
 # [type: int, advanced: false, range: {0, 2147483647}, default: 5000]
 simplex_update_limit = 5000
+
+# Iteration limit for IPM solver
+# [type: int, advanced: false, range: {0, 2147483647}, default: 2147483647]
+ipm_iteration_limit = 2147483647
 
 # Minimum number of threads in parallel execution
 # [type: int, advanced: false, range: {1, 8}, default: 1]
@@ -98,6 +106,14 @@ write_solution_to_file = false
 # Write the primal and dual solution in a pretty (human-readable) format
 # [type: bool, advanced: false, range: {false, true}, default: false]
 write_solution_pretty = false
+
+# MIP solver max number of nodes
+# [type: int, advanced: false, range: {0, 2147483647}, default: 2147483647]
+mip_max_nodes = 2147483647
+
+# MIP solver reporting level
+# [type: int, advanced: false, range: {0, 2}, default: 1]
+mip_report_level = 1
 
 # Run HiGHS simplex solver as if it were hsol
 # [type: bool, advanced: true, range: {false, true}, default: false]
@@ -140,52 +156,20 @@ simplex_price_strategy = 3
 simplex_initial_condition_check = true
 
 # Tolerance on initial basis condition in simplex
-# [type: double, advanced: true, range: [1, 1e+200], default: 1e+14]
+# [type: double, advanced: true, range: [1, inf], default: 1e+14]
 simplex_initial_condition_tolerance = 1e+14
 
 # Threshhold on dual steepest edge weight errors for Devex switch
-# [type: double, advanced: true, range: [1, 1e+200], default: 10]
+# [type: double, advanced: true, range: [1, inf], default: 10]
 dual_steepest_edge_weight_log_error_threshhold = 10
 
 # Dual simplex cost perturbation multiplier: 0 => no perturbation
-# [type: double, advanced: true, range: [0, 1e+200], default: 1]
+# [type: double, advanced: true, range: [0, inf], default: 1]
 dual_simplex_cost_perturbation_multiplier = 1
 
 # Use original HFactor logic for sparse vs hyper-sparse TRANs
 # [type: bool, advanced: true, range: {false, true}, default: true]
 use_original_HFactor_logic = true
-
-# Run iCrash
-# [type: bool, advanced: true, range: {false, true}, default: false]
-icrash = false
-
-# Dualise strategy for iCrash
-# [type: bool, advanced: true, range: {false, true}, default: false]
-icrash_dualize = false
-
-# Strategy for iCrash
-# [type: string, advanced: true, default: "ICA"]
-icrash_strategy = ICA
-
-# iCrash starting weight
-# [type: double, advanced: true, range: [1e-10, 1e+50], default: 0.001]
-icrash_starting_weight = 0.001
-
-# iCrash iterations
-# [type: int, advanced: true, range: {0, 200}, default: 30]
-icrash_iterations = 30
-
-# Exact subproblem solution for iCrash
-# [type: bool, advanced: true, range: {false, true}, default: false]
-icrash_exact = false
-
-# Exact subproblem solution for iCrash
-# [type: bool, advanced: true, range: {false, true}, default: false]
-icrash_breakpoints = false
-
-# iCrash approximate minimization iterations
-# [type: int, advanced: true, range: {0, 100}, default: 50]
-icrash_approximate_minimization_iterations = 50
 
 # Check whether LP is candidate for LiDSE
 # [type: bool, advanced: true, range: {false, true}, default: true]
@@ -194,3 +178,7 @@ less_infeasible_DSE_check = true
 # Use LiDSE if LP has right properties
 # [type: bool, advanced: true, range: {false, true}, default: true]
 less_infeasible_DSE_choose_row = true
+
+# Use mip solver.
+# [type: bool, advanced: true, range: {false, true}, default: false]
+mip = false
