@@ -69,7 +69,7 @@ class="label">Github</span></a></li>
 
 <header>
 <h2 class="alt"><strong>HiGHS</strong> - high performance software <br> for linear optimization </h2>
-<p><div>Open source serial and parallel solver for large-scale <br> sparse linear programming (LP) models </div></p>
+<p><div>Open source serial and parallel solver for large-scale <br>sparse linear programming (LP) and <br>mixed-integer programming (MIP) models </div></p>
 </header>
 
 <footer><a href="#download" class="button scrolly">Download</a></footer>
@@ -86,14 +86,15 @@ class="label">Github</span></a></li>
 </header>
 
 <p> HiGHS is a high performance serial and parallel solver for
-large-scale sparse linear programming (LP) models developed in
-C++11, with interfaces to C, C#, FORTRAN, Julia and Python.</p>
+large-scale sparse linear programming (LP) and mixed-integer
+programming (MIP) models developed in C++11, with interfaces to C, C#,
+FORTRAN, Julia and Python.</p>
 
 <p> HiGHS is freely available under the MIT licence, and is downloaded
 from <a href="https://github.com/ERGO-Code/HiGHS"
 target="_blank">Github</a>. Installing HiGHS from source code requires
 CMake minimum version 3.15, but no other third-party utilities. HiGHS
-can be used as a standalone executable on Windows and Linux. There is
+can be used as a standalone executable on Windows, Linux and MacOS. There is
 a C++11 library which can be used within a C++ project or, via one of
 the interfaces, to a project written in other languages.</p>
 
@@ -145,10 +146,10 @@ another <a href="#run_highs_from_application">application</a> via
 a <a href="#highs_library">library</a>.</p>
 
 <h3 id="specification">Specification</h3>
-  <p>HiGHS can load LP <!--and MIP--> models from data files or via
+  <p>HiGHS can load LP and MIP models from data files or via
   data provided by another application. It can solve LP models using
   implementations of the dual revised simplex method and an interior
-  point method. <!--and MIP models using branch-and-bound.--> The
+  point method, and MIP models using branch-and-bound. The
   solution can be written to a file or retrieved directly for use
   within an application. Within an application, HiGHS can be used to
   modify the current model and re-solve it efficiently.</p>
@@ -274,7 +275,7 @@ via non-C++ interfaces.
 <p>The numbers of column, rows and nonzeros in the model are returned
 by the methods <code>getNumCols</code>, <code>getNumRows</code>
 and <code>getNumEntries</code> respectively. A const reference to the
-current model as an LP is returned by <code>getLp</code>. Data for
+current model as an LP (in general a MIP) is returned by <code>getLp</code>. Data for
 subsets of columns and rows from the model may be extracted using the
 methods <code>getCols</code> and <code>getRows</code>, and specific
 matrix coefficients obtained using the
@@ -441,6 +442,11 @@ file. Formally, the usage is
 <tr><td><code>--options_file arg     </code></td><td><pre>File containing HiGHS options.</pre></tr>
 <tr><td><code>-h, --help             </code></td><td><pre>Print help.</pre></tr>
   </table>
+
+<p>Note that if the <code>solver</code> options is set
+to <code>"simplex"</code> or <code>"ipm"</code> then a MIP that is
+read into HiGHS, or passed via <code>passModel</code>, will be solved
+as an LP.</p>
 
 <p>Within an options file, values are specified line-by-line
 as <code>option_name = value</code>. An example file containing
