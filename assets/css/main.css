@@ -172,7 +172,7 @@ input, select, textarea {
 	}
 
 	strong, b {
-		font-weight: 300;
+		font-weight: 500;
 		color: #666;
 	}
 
@@ -183,6 +183,7 @@ input, select, textarea {
 	a {
 		text-decoration: none;
 		color: inherit;
+		font-weight: 400;
 		border-bottom: dotted 1px rgba(128, 128, 128, 0.5);
 		-moz-transition: color 0.35s ease-in-out, border-bottom-color 0.35s ease-in-out;
 		-webkit-transition: color 0.35s ease-in-out, border-bottom-color 0.35s ease-in-out;
