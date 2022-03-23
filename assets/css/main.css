@@ -2282,6 +2282,18 @@ input, select, textarea {
 				background-color: #e8edec;
 			}
 
+			#main > section.five {
+				background-color: #ecf1f1;
+			}
+
+			#main > section.six {
+				background-color: #e8edec;
+			}
+
+			#main > section.seven {
+				background-color: #ecf1f1;
+			}
+
 /* Wide */
 
 	@media screen and (min-width: 961px) and (max-width: 1880px) {
