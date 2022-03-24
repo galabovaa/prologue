@@ -2274,24 +2274,12 @@ input, select, textarea {
 				background-color: #f5fafa;
 			}
 
-			#main > section.three {
+			#main > section.odd {
 				background-color: #ecf1f1;
 			}
 
-			#main > section.four {
+			#main > section.even {
 				background-color: #e8edec;
-			}
-
-			#main > section.five {
-				background-color: #ecf1f1;
-			}
-
-			#main > section.six {
-				background-color: #e8edec;
-			}
-
-			#main > section.seven {
-				background-color: #ecf1f1;
 			}
 
 /* Wide */
