@@ -74,7 +74,7 @@ large-scale <br>sparse linear programming (LP), <br>mixed-integer
 programming (MIP), and quadratic programming (QP) models </div></p>
 </header>
 
-<footer><a href="https://ergo-code.github.io/HiGHS/get-started" class="button scrolly">Download</a></footer>
+<footer><a href="https://ergo-code.github.io/HiGHS/cpp/get-started.html" class="button scrolly">Download</a></footer>
 
 </div>
 </section>
@@ -118,7 +118,7 @@ touch with the team.</p>
 <h2>Documentation</h2>
 </header>
 
-<p> Information on how to <a href="https://ergo-code.github.io/HiGHS/get-started">set up</a> and use HiGHS is given in
+<p> Information on how to <a href="https://ergo-code.github.io/HiGHS/cpp/get-started.html">set up</a> and use HiGHS is given in
 the <a href="https://ergo-code.github.io/HiGHS/">HiGHS Documentation page</a>. </p>
 
 </div>
@@ -144,110 +144,9 @@ developed by Ivet Galabova.
 
 <h3 id="citation">Citation</h3>
 
-<p>In the absence of a release paper, academic users of HiGHS are kindly requested to cite the following article</p>
+<p>If you use HiGHS in an academic context, please acknowledge this and cite the following article</p>
 
 <p>Parallelizing the dual revised simplex method, Q. Huangfu and J. A. J. Hall, <em>Mathematical Programming Computation</em>, <strong>10</strong> (1), 119-142, 2018. DOI: <a href="https://link.springer.com/article/10.1007/s12532-017-0130-5" target="_blank">10.1007/s12532-017-0130-5</a></p>
-
-<h3 id="terminology">Terminology</h3>
-
-<p>Any linear optimization problem will have <strong>decision
-variables</strong>, a linear or quadratic <strong>objective
-function</strong>, and linear <strong>constraints</strong>
-and <strong>bounds</strong> on the values of the decision
-variables. A <strong>mixed-integer</strong> optimization problem will
-require some or all of the decision variables to take integer
-values. The problem may require the objective function to be maximized
-or minimized whilst satisfying the constraints and bounds. By
-default, HiGHS minimizes the objective function.</p>
-
-<p>The bounds on a decision variable are the least and greatest values
-that it may take, and infinite bounds can be specified. A linear
-objective function is given by a set of coefficients, one for each
-decision variable, and its value is the sum of products of
-coefficients and values of decision variables. The objective
-coefficients are often referred to as <strong>costs</strong>, and some
-may be zero. When a problem has been solved, the optimal values of the
-decision variables are referred to as the <strong>(primal)
-solution</strong>.</p>
-
-<p>Linear constraints require linear functions of decision variables
-to lie between bounds, and infinite bounds can be specified. If the
-bounds are equal, then the constraint is
-an <strong>equation</strong>. If the bounds are both finite, then the
-constraint is said to be <strong>boxed</strong>
-or <strong>two-sided</strong>.</p>
-
-<p>The coefficients of the linear constraints are naturally viewed as
-rows of a <strong>matrix</strong>. The constraint coefficients
-associated with a particular decision variable form a column of the
-constraint matrix. Hence constraints are sometimes referred to
-as <strong>rows</strong>, and decision variables
-as <strong>columns</strong>. Constraint matrix coefficients may be
-zero. Indeed, for large practical problems it is typical for most of
-the coefficients to be zero. When this property can be exploited to
-computational advantage, the matrix is said to
-be <strong>sparse</strong>. When the constraint matrix is not sparse,
-the solution of large problems is normally intractable
-computationally.</p>
-
-<p>It is possible to define a set of constraints and bounds that
-cannot be satisfied, in which case the problem is said to
-be <strong>infeasible</strong>. Conversely, it is possible that the
-value of the objective function can be improved without bound whilst
-satisfying the constraints and bounds, in which case the problem is
-said to be <strong>unbounded</strong>. If a problem is neither
-infeasible, nor unbounded, it has an <strong>optimal
-solution</strong>. The optimal objective function value for a linear
-optimization problem may be achieved at more than point, in which case
-the optimal solution is said to be <strong>non-unique</strong>.</p>
-
-<p>
-When none of the decision variables is required to take integer
-values, the problem is said to be <strong>continuous</strong>. For
-continuous problems, each variable and constraint has an
-associated <strong>dual variable</strong>. The values of the dual
-variables constitute the <strong>dual solution</strong>, and it is for
-this reason that the term <strong>primal solution</strong> is used to
-distinguish the optimal values of the decision variables. At the
-optimal solution of a continuous problem, some of the decision
-variables and values of constraint functions will be equal to their
-lower or upper bounds. Such a bound is said to
-be <strong>active</strong>. If a variable or constraint is at a bound,
-its corresponding dual solution value will generally be non-zero: when
-at a lower bound the dual value will be non-negative; when at an upper
-bound the dual value will be non-positive. When maximizing the
-objective the required signs of the dual values are reversed. Due to
-their economic interpretation, the dual values associated with
-constraints are often referred to as <strong>shadow prices</strong>
-or <strong>fair prices</strong>. Mathematically, the dual values
-associated with variables are often referred to as <strong>reduced
-costs</strong>, and the dual values associated with constraints are
-often referred to as <strong>Lagrange multipliers</strong>.
-</p>
-
-<p>
-Analysis of the change in optimal objective value of a continuous
-linear optimization problem as the cost coefficients and bounds are
-changed is referred to in HiGHS as <strong>ranging</strong>. For an
-active bound, the corresponding dual value gives the change in the
-objective if that bound is increased or decreased. This level of
-analysis is often referred to as <strong>sensitivity</strong>. In
-general, the change in the objective is only known for a limited range
-of values for the active bound. HiGHS will return the limits of
-these <strong>bound ranges</strong> ranges, the objective value at
-both limits and the index of a variable or constraint that will
-acquire an active bound at both limits. For each variable with an
-active bound, the solution will remain optimal for a range of values
-of its cost coefficient. HiGHS will return the values of
-these <strong>cost ranges</strong>. For a variable or constraint whose
-value is not at a bound, HiGHS will return the range of values that
-the variable or constraint can take, the objective values at the
-limits of the range, and the index of a variable or constraint with a
-bound that will become in active at both limits.
-</p>
-
-
-
 
 </div>
 
