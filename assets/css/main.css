@@ -353,6 +353,14 @@ input, select, textarea {
 			margin-left: 33.33333%;
 		}
 
+		.row > .col-20 {
+			width: 20.0%;
+		}
+
+		.row > .off-20 {
+			margin-left: 20%;
+		}
+
 		.row > .col-5 {
 			width: 41.66667%;
 		}
@@ -586,6 +594,14 @@ input, select, textarea {
 
 				.row > .off-3-wide {
 					margin-left: 25%;
+				}
+
+				.row > .col-20-wide {
+					width: 20%;
+				}
+
+				.row > .off-20-wide {
+					margin-left: 20%;
 				}
 
 				.row > .col-4-wide {
