@@ -605,7 +605,7 @@ input, select, textarea {
 				}
 
 				.row > .col-4-wide {
-					width: 33.33333%;
+					width: 33.33333666666
 				}
 
 				.row > .off-4-wide {
@@ -1802,6 +1802,75 @@ input, select, textarea {
 		.image.fit {
 			display: block;
 			width: 100%;
+		}
+
+		.image.fit.no-stretch {
+			width: 100%;
+			height: auto;
+			object-fit: contain;
+			object-position: center;
+			/* background: #0000; optional */
+		}
+
+		.logo-wall {
+			display: grid;
+			grid-template-columns: repeat(auto-fit, minmax(165px, 1fr));
+			gap: 3rem;
+			align-items: center;
+		}
+
+		.logo-wall img {
+			max-width: 300px;        /* keep logos similar size */
+			width: 100%;
+			height: 100%;
+			max-height: 90px;
+			object-fit: contain;     /* don't stretch */
+			margin: 0 auto;          /* center each logo */
+			display: block;
+			/* filter: grayscale(100%); optional: make logos uniform */
+			/* opacity: 0.8; */
+			/* transition: opacity 0.3s ease; */
+		}
+
+		/* .logo-wall img:hover {
+			opacity: 1;
+			filter: grayscale(0%);
+		} */
+
+		.small-logo-95 {
+			transform: scale(0.95);
+		}
+
+		.small-logo-90 {
+			transform: scale(0.90);
+		}
+
+		.small-logo-80 {
+			transform: scale(0.80);
+		}
+
+		.small-logo-75 {
+			transform: scale(0.75);
+		}
+
+		.small-logo-70 {
+			transform: scale(0.70);
+		}
+
+		.small-logo-60 {
+			transform: scale(0.60);
+		}
+
+		.small-logo-55 {
+			transform: scale(0.55);
+		}
+
+		.small-logo-50 {
+			transform: scale(0.50);
+		}
+
+		.small-logo-40 {
+			transform: scale(0.40);
 		}
 
 		.image.featured {
